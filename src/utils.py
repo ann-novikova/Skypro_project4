@@ -4,9 +4,11 @@ import os
 from src.category import Category
 from src.product import Product
 
+path_to_files = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "data")
 
-def read_json(path: str) -> list[dict]:
-    full_path = os.path.abspath(path)
+
+def read_json(filename: str) -> list[dict]:
+    full_path = os.path.join(path_to_files, filename)
     with open(full_path, "r", encoding="utf-8") as f:
         data = json.load(f)
     if isinstance(data, list):
