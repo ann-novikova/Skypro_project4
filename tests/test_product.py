@@ -1,5 +1,7 @@
 from unittest.mock import Mock, patch
 
+import pytest
+
 from src.product import Product
 
 
@@ -21,7 +23,7 @@ def test_new_product(new_product: dict) -> None:
     assert product5.price == 250000.0
 
 
-def test_price_setter_zero(capsys, product1: Product) -> None:
+def test_price_setter_zero(capsys: pytest.CaptureFixture[str], product1: Product) -> None:
     product1.price = 0
     message = capsys.readouterr()
     assert message.out.strip() == "Цена не должна быть нулевая или отрицательная"
