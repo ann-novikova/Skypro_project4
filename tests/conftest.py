@@ -47,9 +47,11 @@ def category2(product3: Product) -> Category:
         [product3],
     )
 
+
 @pytest.fixture()
 def product_iterator(category1: Category) -> ProductIterator:
     return ProductIterator(category1)
+
 
 @pytest.fixture()
 def json() -> list[dict]:

@@ -17,11 +17,11 @@ class Category:
         Category.category_count += 1
         Category.product_count += len(products)
 
-    def __str__(self):
+    def __str__(self) -> str:
         product_quantity = 0
         for product in self.__products:
             product_quantity += product.quantity
-        return f'{self.name}, количество продуктов: {product_quantity} шт.'
+        return f"{self.name}, количество продуктов: {product_quantity} шт."
 
     def add_product(self, product: Product) -> None:
         self.__products.append(product)
@@ -31,7 +31,7 @@ class Category:
     def products(self) -> str:
         products_str = ""
         for product in self.__products:
-            products_str += f'{str(product)}\n'
+            products_str += f"{str(product)}\n"
         return products_str
 
     @products.setter
@@ -41,4 +41,3 @@ class Category:
     @property
     def products_in_list(self) -> list:
         return self.__products
-

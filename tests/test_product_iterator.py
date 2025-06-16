@@ -1,5 +1,7 @@
 import pytest
+
 from src.product_iterator import ProductIterator
+
 
 def test_product_iterator(product_iterator: ProductIterator) -> None:
     iter(product_iterator)

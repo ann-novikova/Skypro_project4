@@ -42,9 +42,10 @@ def test_price_setter_low_not_confirmed(mock_input: Mock, product1: Product) -> 
     product1.price = 150000.0
     assert product1.price == 180000.0
 
+
 def test_products_str(product1: Product) -> None:
-    assert str(product1) == 'Samsung Galaxy S23 Ultra, 180000.0 руб. Остаток: 5 шт.'
+    assert str(product1) == "Samsung Galaxy S23 Ultra, 180000.0 руб. Остаток: 5 шт."
 
-def test_products_add(product1: Product, product2: Product):
+
+def test_products_add(product1: Product, product2: Product) -> None:
     assert product1 + product2 == 2580000.0
-
