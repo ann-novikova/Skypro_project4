@@ -20,6 +20,16 @@ def product3() -> Product:
 
 
 @pytest.fixture()
+def product4() -> Product:
+    return Product("Iphone 12 mini", "Фоновая подсветка", 45000.0, 6)
+
+
+@pytest.fixture()
+def new_product() -> dict[str, str | float]:
+    return {"name": "Iphone 15", "description": "512GB, Gray space", "price": 250000.0, "quantity": 10}
+
+
+@pytest.fixture()
 def category1(product1: Product, product2: Product) -> Category:
     return Category(
         "Смартфоны",
