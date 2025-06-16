@@ -1,7 +1,6 @@
 from typing import Any
 
 from src.category import Category
-from src.product import Product
 
 
 class ProductIterator:
