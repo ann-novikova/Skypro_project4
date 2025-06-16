@@ -38,3 +38,7 @@ class Category:
     def products(self, product: Product) -> None:
         self.add_product(product)
 
+    @property
+    def products_in_list(self) -> list:
+        return self.__products
+
