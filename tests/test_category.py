@@ -37,7 +37,7 @@ def test_category_products_in_list(
     assert category1.products_in_list == [product1, product2]
 
 
-def test_add_product(category1: Category, product4: list) -> None:
+def test_add_product(category1: Category, product4: Product) -> None:
     category1.products = product4
     assert category1.products == (
         "Samsung Galaxy S23 Ultra, 180000.0 руб. Остаток: 5 шт.\n"

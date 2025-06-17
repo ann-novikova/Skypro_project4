@@ -4,7 +4,7 @@ from src.product import Product
 class Category:
     name: str
     description: str
-    products: list
+    __products: list
 
     category_count = 0
     product_count = 0

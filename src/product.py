@@ -1,7 +1,7 @@
 class Product:
     name: str
     description: str
-    price: float
+    __price: float
     quantity: int
 
     product_list: list = []
