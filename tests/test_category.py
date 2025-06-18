@@ -31,6 +31,12 @@ def test_category_products_list(
     assert category2.products == ('55" QLED 4K, 123000.0 руб. Остаток: 7 шт.\n')
 
 
+def test_category_products_in_list(
+    category1: Category, product1: Product, product2: Product, product3: Product
+) -> None:
+    assert category1.products_in_list == [product1, product2]
+
+
 def test_add_product(category1: Category, product4: Product) -> None:
     category1.products = product4
     assert category1.products == (
@@ -38,3 +44,7 @@ def test_add_product(category1: Category, product4: Product) -> None:
         "Iphone 15, 210000.0 руб. Остаток: 8 шт.\n"
         "Iphone 12 mini, 45000.0 руб. Остаток: 6 шт.\n"
     )
+
+
+def test_category_str(category1: Category) -> None:
+    assert str(category1) == "Смартфоны, количество продуктов: 13 шт."
