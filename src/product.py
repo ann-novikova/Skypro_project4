@@ -1,5 +1,4 @@
 class Product:
-
     """Класс для учета товаров"""
 
     name: str

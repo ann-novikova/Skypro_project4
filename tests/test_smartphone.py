@@ -16,15 +16,12 @@ def test_smartphone_init(smartphone1: Smartphone) -> None:
     assert smartphone1.memory == 256
     assert smartphone1.color == "Серый"
 
+
 def test_smartphone_add(smartphone1: Smartphone, smartphone2: Smartphone) -> None:
     assert smartphone1 + smartphone2 == 2580000.0
 
-def test_smartphone_add_error(smartphone1: Smartphone, lawngrass1: LawnGrass, product1: Product):
+
+def test_smartphone_add_error(smartphone1: Smartphone, lawngrass1: LawnGrass, product1: Product) -> None:
     with pytest.raises(TypeError):
         smartphone1 + lawngrass1
         smartphone1 + product1
-        smartphone1 + 1
-
-
-
-

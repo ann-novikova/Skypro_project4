@@ -4,7 +4,6 @@ from src.category import Category
 
 
 class ProductIterator:
-
     """Вспомогательный класс для перебора товаров из категорий"""
 
     def __init__(self, product_category: Category):

@@ -2,6 +2,7 @@ import pytest
 
 from src.category import Category
 from src.product import Product
+from src.smartphone import Smartphone
 
 
 def test_category_init(
@@ -39,7 +40,7 @@ def test_category_products_in_list(
     assert category1.products_in_list == [product1, product2]
 
 
-def test_add_product(category1: Category, product4: Product, smartphone2) -> None:
+def test_add_product(category1: Category, product4: Product, smartphone2: Smartphone) -> None:
     category1.products = product4
     assert category1.products == (
         "Samsung Galaxy S23 Ultra, 180000.0 руб. Остаток: 5 шт.\n"
@@ -55,10 +56,10 @@ def test_add_product(category1: Category, product4: Product, smartphone2) -> Non
         "Iphone 15, 210000.0 руб. Остаток: 8 шт.\n"
     )
 
+
 def test_add_product_error(category1: Category) -> None:
     with pytest.raises(TypeError):
-        category1.products = 'iphone'
-
+        category1.products = "iphone"
 
 
 def test_category_str(category1: Category) -> None:
