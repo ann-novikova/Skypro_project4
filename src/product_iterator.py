@@ -4,6 +4,9 @@ from src.category import Category
 
 
 class ProductIterator:
+
+    """Вспомогательный класс для перебора товаров из категорий"""
+
     def __init__(self, product_category: Category):
         self.category = product_category
         self.index = 0

@@ -2,6 +2,9 @@ from src.product import Product
 
 
 class Category:
+
+    """Класс категория для группировки продуктов"""
+
     name: str
     description: str
     __products: list

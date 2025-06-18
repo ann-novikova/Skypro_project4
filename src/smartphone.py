@@ -2,6 +2,8 @@ from src.product import Product
 
 class Smartphone(Product):
 
+    """Дочерний класс от Product с дополнительными характеристиками смартфонов"""
+
     def __init__(
             self, name: str, description: str, price: float, quantity: int, efficiency: float,
             model: str, memory: int, color: str
