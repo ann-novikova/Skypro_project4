@@ -1,3 +1,5 @@
+from typing import Any
+
 from src.base_category import BaseCategory
 from src.product import Product
 
@@ -26,7 +28,7 @@ class Category(BaseCategory):
             product_quantity += product.quantity
         return f"{self.name}, количество продуктов: {product_quantity} шт."
 
-    def add_product(self, product: Product) -> None:
+    def add_product(self, product: Any) -> None:
         if isinstance(product, Product):
             self.__products.append(product)
             Category.product_count += 1
@@ -41,7 +43,9 @@ class Category(BaseCategory):
         return products_str
 
     @products.setter
-    def products(self, product: Product) -> None:
+    def products(self, product: Any) -> None:
+        if not isinstance(product, Product):
+            raise TypeError("Можно добавлять только объекты Product")
         self.add_product(product)
 
     @property
