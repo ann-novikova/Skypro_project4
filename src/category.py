@@ -1,4 +1,4 @@
-from src.basecategory import BaseCategory
+from src.base_category import BaseCategory
 from src.product import Product
 
 
