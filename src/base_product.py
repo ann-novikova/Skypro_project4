@@ -1,6 +1,5 @@
 from abc import ABC, abstractmethod
-
-from src.product import Product
+from typing import Any
 
 
 class BaseProduct(ABC):
@@ -14,12 +13,12 @@ class BaseProduct(ABC):
         pass
 
     @abstractmethod
-    def __add__(self, other: "Product") -> float:
+    def __add__(self, other: Any) -> float:
         pass
 
     @property
     @abstractmethod
-    def price(self) -> None:
+    def price(self) -> float:
         pass
 
     @price.setter

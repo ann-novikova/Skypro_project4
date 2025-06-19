@@ -2,6 +2,7 @@ import pytest
 
 from src.category import Category
 from src.lawngrass import LawnGrass
+from src.order import Order
 from src.product import Product
 from src.product_iterator import ProductIterator
 from src.smartphone import Smartphone
@@ -70,6 +71,11 @@ def category2(product3: Product) -> Category:
         "Современный телевизор, который позволяет наслаждаться просмотром, станет вашим другом и помощником",
         [product3],
     )
+
+
+@pytest.fixture()
+def order1(product1: Product) -> Order:
+    return Order(product1, 2)
 
 
 @pytest.fixture()
