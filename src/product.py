@@ -1,4 +1,8 @@
-class Product:
+from src.base_product import BaseProduct
+from src.mixin import PrintMixin
+
+
+class Product(PrintMixin, BaseProduct):
     """Класс для учета товаров"""
 
     name: str
@@ -13,6 +17,7 @@ class Product:
         self.description = description
         self.__price = price
         self.quantity = quantity
+        super().__init__()
 
         Product.product_list.append({"name": name, "description": description, "price": price, "quantity": quantity})
 
@@ -24,23 +29,6 @@ class Product:
             return self.__price * self.quantity + other.__price * other.quantity
         else:
             raise TypeError
-
-    @classmethod
-    def new_product(cls, new_product: dict) -> "Product":
-        for product in Product.product_list:
-            if product.get("name") == new_product.get("name"):
-                name = new_product.get("name", "")
-                description = new_product.get("description", "")
-                price_new = new_product.get("price", 0.0)
-                price_old = product.get("price", 0.0)
-                quantity_new = new_product.get("quantity", 0)
-                quantity_old = product.get("quantity", 0)
-                price = price_new if price_new >= price_old else price_old
-                quantity = quantity_new + quantity_old
-
-                return cls(name, description, price, quantity)
-
-        return cls(**new_product)
 
     @property
     def price(self) -> float:
@@ -58,3 +46,20 @@ class Product:
             else:
                 print("Действие отменено")
                 return
+
+    @classmethod
+    def new_product(cls, new_product: dict) -> "Product":
+        for product in Product.product_list:
+            if product.get("name") == new_product.get("name"):
+                name = new_product.get("name", "")
+                description = new_product.get("description", "")
+                price_new = new_product.get("price", 0.0)
+                price_old = product.get("price", 0.0)
+                quantity_new = new_product.get("quantity", 0)
+                quantity_old = product.get("quantity", 0)
+                price = price_new if price_new >= price_old else price_old
+                quantity = quantity_new + quantity_old
+
+                return cls(name, description, price, quantity)
+
+        return cls(**new_product)
