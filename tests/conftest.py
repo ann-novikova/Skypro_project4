@@ -72,6 +72,7 @@ def category2(product3: Product) -> Category:
         [product3],
     )
 
+
 @pytest.fixture()
 def category_empty() -> Category:
     return Category(
@@ -79,6 +80,7 @@ def category_empty() -> Category:
         "Современный телевизор, который позволяет наслаждаться просмотром, станет вашим другом и помощником",
         [],
     )
+
 
 @pytest.fixture()
 def order1(product1: Product) -> Order:

@@ -3,9 +3,7 @@ from unittest.mock import Mock, patch
 import pytest
 from _pytest.capture import CaptureFixture
 
-from src.order import Order
 from src.product import Product
-from tests.conftest import order1
 
 
 def test_product_init(capsys: CaptureFixture, product1: Product, product2: Product) -> None:
@@ -25,10 +23,10 @@ def test_product_init(capsys: CaptureFixture, product1: Product, product2: Produ
         "Product(Iphone 15, 512GB, Gray space, 210000.0, 8)"
     )
 
-def test_zero_quantity_init() -> None:
-    with pytest.raises(ValueError, match='Товар с нулевым количеством не может быть добавлен'):
-        test_product = Product('55" QLED 4K', "Фоновая подсветка", 123000.0, 0)
 
+def test_zero_quantity_init() -> None:
+    with pytest.raises(ValueError, match="Товар с нулевым количеством не может быть добавлен"):
+        Product('55" QLED 4K', "Фоновая подсветка", 123000.0, 0)
 
 
 def test_new_product(new_product: dict) -> None:

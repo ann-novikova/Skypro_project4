@@ -12,14 +12,14 @@ class Order(BaseCategory):
         self.ID += 1
         try:
             if product.quantity == 0:
-                raise ZeroQuantityException('Невозможно добавить товар с нулевым количеством')
+                raise ZeroQuantityException("Невозможно добавить товар с нулевым количеством")
         except ZeroQuantityException as e:
             print(str(e))
         else:
             self.product = product
-            print('Товар добавлен')
+            print("Товар добавлен")
         finally:
-            print('Обработка добавления товара завершена')
+            print("Обработка добавления товара завершена")
         self.sold_quantity = sold_quantity
         product.quantity -= self.sold_quantity
 

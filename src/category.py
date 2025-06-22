@@ -21,14 +21,14 @@ class Category(BaseCategory):
         try:
             for product in products:
                 if product.quantity == 0:
-                    raise ZeroQuantityException('Невозможно добавить товар с нулевым количеством')
+                    raise ZeroQuantityException("Невозможно добавить товар с нулевым количеством")
         except ZeroQuantityException as e:
             print(str(e))
         else:
             self.__products = products
-            print('Товар добавлен')
+            print("Товар добавлен")
         finally:
-            print('Обработка добавления товара завершена')
+            print("Обработка добавления товара завершена")
 
         Category.category_count += 1
         Category.product_count += len(products)
@@ -43,15 +43,15 @@ class Category(BaseCategory):
         if isinstance(product, Product):
             try:
                 if product.quantity == 0:
-                    raise ZeroQuantityException('Невозможно добавить товар с нулевым количеством')
+                    raise ZeroQuantityException("Невозможно добавить товар с нулевым количеством")
             except ZeroQuantityException as e:
                 print(str(e))
             else:
                 self.__products.append(product)
                 Category.product_count += 1
-                print('Товар добавлен')
+                print("Товар добавлен")
             finally:
-                print('Обработка добавления товара завершена')
+                print("Обработка добавления товара завершена")
         else:
             raise TypeError
 
@@ -72,8 +72,8 @@ class Category(BaseCategory):
     def products_in_list(self) -> list:
         return self.__products
 
-    def middle_price(self):
+    def middle_price(self) -> Any:
         try:
-            return round(sum([product.price for product in self.__products]) / len(self.__products),2)
+            return round(sum([product.price for product in self.__products]) / len(self.__products), 2)
         except ZeroDivisionError:
             return float(0)

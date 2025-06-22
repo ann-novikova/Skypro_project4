@@ -2,9 +2,9 @@ import pytest
 from _pytest.capture import CaptureFixture
 
 from src.category import Category
+from src.order import Order
 from src.product import Product
 from src.smartphone import Smartphone
-from src.order import Order
 
 
 def test_category_init(
@@ -26,13 +26,15 @@ def test_category_init(
     assert category1.product_count == 3
     assert category2.product_count == 3
 
+
 def test_product_zero_quantity(capsys: CaptureFixture, product1: Product, category2: Category) -> None:
-    order_test = Order(product1, 5)
+    Order(product1, 5)
     category2.add_product(product1)
     message = capsys.readouterr()
-    assert message.out.strip().split('\n')[-2:] == ['Невозможно добавить товар с нулевым количеством',
-                                               'Обработка добавления товара завершена']
-
+    assert message.out.strip().split("\n")[-2:] == [
+        "Невозможно добавить товар с нулевым количеством",
+        "Обработка добавления товара завершена",
+    ]
 
 
 def test_category_products_list(
@@ -71,6 +73,7 @@ def test_setter_product_error(category1: Category) -> None:
     with pytest.raises(TypeError):
         category1.products = "iphone"
 
+
 def test_add_product_error(category1: Category) -> None:
     with pytest.raises(TypeError):
         category1.add_product("iphone")
@@ -79,8 +82,10 @@ def test_add_product_error(category1: Category) -> None:
 def test_category_str(category1: Category) -> None:
     assert str(category1) == "Смартфоны, количество продуктов: 13 шт."
 
+
 def test_middle_price(category1: Category) -> None:
     assert category1.middle_price() == 195000.0
+
 
 def test_middle_price_empty(category_empty: Category) -> None:
     assert category_empty.middle_price() == 0.0

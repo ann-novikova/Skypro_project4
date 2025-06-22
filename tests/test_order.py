@@ -16,9 +16,12 @@ def test_order_get_total_cost(order1: Order) -> None:
 def test_order_str(order1: Order) -> None:
     assert str(order1) == "ID: 1, количество проданных продуктов: 2 шт., итоговая стоимость 360000.0"
 
+
 def test_product_zero_quantity(capsys: CaptureFixture, product1: Product) -> None:
-    order_test = Order(product1, 5)
-    order_test2 = Order(product1, 1)
+    Order(product1, 5)
+    Order(product1, 1)
     message = capsys.readouterr()
-    assert message.out.strip().split('\n')[-2:] == ['Невозможно добавить товар с нулевым количеством',
-                                               'Обработка добавления товара завершена']
+    assert message.out.strip().split("\n")[-2:] == [
+        "Невозможно добавить товар с нулевым количеством",
+        "Обработка добавления товара завершена",
+    ]
