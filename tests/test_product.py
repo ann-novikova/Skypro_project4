@@ -1,11 +1,12 @@
 from unittest.mock import Mock, patch
 
 import pytest
+from _pytest.capture import CaptureFixture
 
 from src.product import Product
 
 
-def test_product_init(product1: Product, product2: Product) -> None:
+def test_product_init(capsys: CaptureFixture, product1: Product, product2: Product) -> None:
     assert product1.name == "Samsung Galaxy S23 Ultra"
     assert product1.description == "256GB, Серый цвет, 200MP камера"
     assert product1.price == 180000.0
@@ -15,6 +16,12 @@ def test_product_init(product1: Product, product2: Product) -> None:
     assert product2.description == "512GB, Gray space"
     assert product2.price == 210000.0
     assert product2.quantity == 8
+
+    message = capsys.readouterr()
+    assert message.out.strip() == (
+        "Product(Samsung Galaxy S23 Ultra, 256GB, Серый цвет, 200MP камера, 180000.0, 5)\n"
+        "Product(Iphone 15, 512GB, Gray space, 210000.0, 8)"
+    )
 
 
 def test_new_product(new_product: dict) -> None:
@@ -26,7 +33,7 @@ def test_new_product(new_product: dict) -> None:
 def test_price_setter_zero(capsys: pytest.CaptureFixture[str], product1: Product) -> None:
     product1.price = 0
     message = capsys.readouterr()
-    assert message.out.strip() == "Цена не должна быть нулевая или отрицательная"
+    assert message.out.strip().split("\n")[-1] == "Цена не должна быть нулевая или отрицательная"
 
 
 @patch("builtins.input")
