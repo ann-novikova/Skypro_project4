@@ -12,7 +12,7 @@ class Order(BaseCategory):
         self.ID += 1
         try:
             if product.quantity == 0:
-                raise ZeroDivisionError('Невозможно добавить товар с нулевым количеством')
+                raise ZeroQuantityException('Невозможно добавить товар с нулевым количеством')
         except ZeroQuantityException as e:
             print(str(e))
         else:
@@ -21,6 +21,7 @@ class Order(BaseCategory):
         finally:
             print('Обработка добавления товара завершена')
         self.sold_quantity = sold_quantity
+        product.quantity -= self.sold_quantity
 
     def get_total_cost(self) -> float:
         return self.product.price * self.sold_quantity
