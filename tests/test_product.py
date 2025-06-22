@@ -24,6 +24,11 @@ def test_product_init(capsys: CaptureFixture, product1: Product, product2: Produ
     )
 
 
+def test_zero_quantity_init() -> None:
+    with pytest.raises(ValueError, match="Товар с нулевым количеством не может быть добавлен"):
+        Product('55" QLED 4K', "Фоновая подсветка", 123000.0, 0)
+
+
 def test_new_product(new_product: dict) -> None:
     product5 = Product.new_product(new_product)
     assert product5.quantity == 18

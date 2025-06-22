@@ -74,6 +74,15 @@ def category2(product3: Product) -> Category:
 
 
 @pytest.fixture()
+def category_empty() -> Category:
+    return Category(
+        "Телевизоры",
+        "Современный телевизор, который позволяет наслаждаться просмотром, станет вашим другом и помощником",
+        [],
+    )
+
+
+@pytest.fixture()
 def order1(product1: Product) -> Order:
     return Order(product1, 2)
 

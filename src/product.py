@@ -16,7 +16,10 @@ class Product(PrintMixin, BaseProduct):
         self.name = name
         self.description = description
         self.__price = price
-        self.quantity = quantity
+        if quantity == 0:
+            raise ValueError("Товар с нулевым количеством не может быть добавлен")
+        else:
+            self.quantity = quantity
         super().__init__()
 
         Product.product_list.append({"name": name, "description": description, "price": price, "quantity": quantity})
