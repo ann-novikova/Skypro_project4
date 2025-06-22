@@ -1,5 +1,6 @@
 from src.base_category import BaseCategory
 from src.product import Product
+from src.zero_expeption import ZeroQuantityException
 
 
 class Order(BaseCategory):
@@ -9,7 +10,16 @@ class Order(BaseCategory):
     def __init__(self, product: Product, sold_quantity: int):
         self.id = self.ID
         self.ID += 1
-        self.product = product
+        try:
+            if product.quantity == 0:
+                raise ZeroDivisionError('Невозможно добавить товар с нулевым количеством')
+        except ZeroQuantityException as e:
+            print(str(e))
+        else:
+            self.product = product
+            print('Товар добавлен')
+        finally:
+            print('Обработка добавления товара завершена')
         self.sold_quantity = sold_quantity
 
     def get_total_cost(self) -> float:
